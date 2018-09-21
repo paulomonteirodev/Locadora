@@ -103,7 +103,7 @@ namespace Paulo.Web.Controllers
 
                     await userManager.SendEmailAsync(user.Id, 
                         "Confirme seu e-mail", 
-                        "Clique aqui para confirmar seu e-mail <a href=\"" + callbackUrl + "\">here</a>");
+                        "Para confirmar o e-mail <a href=\"" + callbackUrl + "\">clique aqui</a>");
 
                     return View("DisplayEmail");
                 }
