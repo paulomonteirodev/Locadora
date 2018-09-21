@@ -10,6 +10,9 @@ namespace Paulo.Infra.Identity.Configuration
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
     public class ApplicationUserManager : UserManager<ApplicationUser, int>
     {
+        // Utilizado no ConfigureAuth da classe Startup.Auth.cs
+        public static IDataProtectionProvider DataProtectionProvider { get; set; }
+
         public ApplicationUserManager(IUserStore<ApplicationUser, int> store)
             : base(store)
         {
@@ -59,10 +62,10 @@ namespace Paulo.Infra.Identity.Configuration
             // Classe para serviço de email
             EmailService = new EmailService();
 
-            var provider = new DpapiDataProtectionProvider("Paulo");
-            var dataProtector = provider.Create("ASP.NET Identity");
+            var provider = DataProtectionProvider;
             if (provider != null)
             {
+                var dataProtector = provider.Create("ASP.NET Identity");
                 UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser, int>(dataProtector);
             }
         }
