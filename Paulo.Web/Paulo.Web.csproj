@@ -226,22 +226,12 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\css\Site.css" />
-    <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Content\js\jquery-3.3.1.intellisense.js" />
-    <Content Include="Content\js\jquery-3.3.1.js" />
     <Content Include="Content\js\jquery-3.3.1.min.js" />
-    <Content Include="Content\js\jquery-3.3.1.slim.js" />
-    <Content Include="Content\js\jquery-3.3.1.slim.min.js" />
-    <None Include="Content\js\jquery.validate-vsdoc.js" />
-    <Content Include="Content\js\jquery.validate.js" />
     <Content Include="Content\js\jquery.validate.min.js" />
-    <Content Include="Content\js\jquery.validate.unobtrusive.js" />
-    <Content Include="Content\js\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Content\js\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -289,8 +279,6 @@
     <Content Include="Content\css\bootstrap-theme.css.map" />
     <Content Include="libman.json" />
     <None Include="packages.config" />
-    <Content Include="Content\js\jquery-3.3.1.slim.min.map" />
-    <Content Include="Content\js\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Paulo.Core\Paulo.Core.csproj">
