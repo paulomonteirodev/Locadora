@@ -1,0 +1,21 @@
+﻿@model Paulo.Infra.Identity.Models.IndexViewModel
+@{
+    ViewBag.Title = "Gerenciar";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Senha:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Mude sua senha", "ChangePassword")
+            }
+        </dd>
+    </dl>
+</div>

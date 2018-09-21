@@ -1,0 +1,54 @@
+﻿@model Paulo.Web.ViewModels.LocacaoViewModel
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataDaLocacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataDaLocacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.CPF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.CPF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Filmes)
+        </dt>
+
+        @foreach (var filme in Model.Filmes)
+        {
+            <dd>
+                @Html.DisplayFor(modeItem => filme.Nome)
+            </dd>
+        }
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para a lista", "Index")
+</p>

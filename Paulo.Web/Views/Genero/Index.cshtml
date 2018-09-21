@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Paulo.Web.ViewModels.GeneroViewModel>
+
+@{
+    ViewBag.Title = "Lista de Generos";
+}
+
+<h2>Lista de Generos</h2>
+
+@using (Html.BeginForm("DeleteMany", "Genero", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <p>
+        @Html.ActionLink("Criar Novo", "Create", null, htmlAttributes: new { @class = "pull-left" })
+    </p>
+    <input type="submit" class="btn btn-danger btn-delete pull-right" value="Deletar os selecionados" />
+
+    <table class="table">
+        <tr>
+            <th>
+                Selecionar
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataDeCadastro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataDeAtualizacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <input type="checkbox" name="idsToDelete" id="idsToDelete" value="@item.Id" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataDeCadastro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataDeAtualizacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ativo)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
