@@ -1,12 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Paulo.Core.Repositories;
+using Paulo.Data.Context;
 using Paulo.Data.Entities;
 
 namespace Paulo.Impl.Repositories
 {
     public class FilmeRepository : Repository<Filme>, IFilmeRepository
     {
+        public FilmeRepository(AppDbContext db)
+            :base(db)
+        {
+
+        }
+
         public override IEnumerable<Filme> GetAll()
         {
             return db.Filme.Where(x => !x.Deleted && !x.Genero.Deleted);

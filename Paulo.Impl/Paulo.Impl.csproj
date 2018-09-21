@@ -69,6 +69,7 @@
     <Compile Include="Repositories\GeneroRepository.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="Service.cs" />
+    <Compile Include="Services\CpfService.cs" />
     <Compile Include="Services\LocacaoService.cs" />
     <Compile Include="Services\GeneroService.cs" />
     <Compile Include="Services\FilmeService.cs" />

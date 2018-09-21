@@ -47,6 +47,7 @@
     <Compile Include="Repositories\IFilmeRepository.cs" />
     <Compile Include="Repositories\ILocacaoRepository.cs" />
     <Compile Include="Repositories\IGeneroRepository.cs" />
+    <Compile Include="Services\ICpfService.cs" />
     <Compile Include="Services\IFilmeService.cs" />
     <Compile Include="Services\IGeneroService.cs" />
     <Compile Include="Services\ILocacaoService.cs" />

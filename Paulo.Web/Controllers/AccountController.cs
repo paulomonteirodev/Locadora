@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Paulo.Core.Services;
 using Paulo.Infra.Identity.Configuration;
 using Paulo.Infra.Identity.Models;
 
@@ -15,11 +16,16 @@ namespace Paulo.Web.Controllers
     {
         private ApplicationUserManager userManager;
         private ApplicationSignInManager signInManager;
+        private readonly ICpfService cpfService;
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(
+            ApplicationUserManager userManager,
+            ApplicationSignInManager signInManager,
+            ICpfService cpfService)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.cpfService = cpfService;
         }
 
         //
@@ -83,9 +89,15 @@ namespace Paulo.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!cpfService.Validade(model.CPF))
             {
-                var user = new ApplicationUser {
+                ModelState.AddModelError("CPF", "CPF inválido");
+                return View(model);
+            }
+            else if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser
+                {
                     UserName = model.Email,
                     Name = model.Name,
                     Email = model.Email,
@@ -97,12 +109,12 @@ namespace Paulo.Web.Controllers
                 {
                     // Envio de email para confirmação de cadastro
                     string code = await userManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", 
-                        new { userId = user.Id, code = code }, 
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account",
+                        new { userId = user.Id, code = code },
                         protocol: Request.Url.Scheme);
 
-                    await userManager.SendEmailAsync(user.Id, 
-                        "Confirme seu e-mail", 
+                    await userManager.SendEmailAsync(user.Id,
+                        "Confirme seu e-mail",
                         "Para confirmar o e-mail <a href=\"" + callbackUrl + "\">clique aqui</a>");
 
                     return View("DisplayEmail");

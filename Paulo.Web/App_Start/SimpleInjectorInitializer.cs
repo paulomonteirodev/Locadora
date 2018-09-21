@@ -5,6 +5,7 @@ using Microsoft.Owin.Security;
 using Paulo.Core;
 using Paulo.Core.Repositories;
 using Paulo.Core.Services;
+using Paulo.Data.Context;
 using Paulo.Impl;
 using Paulo.Impl.Repositories;
 using Paulo.Impl.Services;
@@ -42,6 +43,7 @@ namespace Paulo.Web.App_Start
         private static void InitializerContainer(Container container)
         {
             // Identity
+            container.Register<AppDbContext>(Lifestyle.Scoped);
             container.Register<ApplicationDbContext>(Lifestyle.Scoped);
             container.Register<IUserStore<ApplicationUser, int>>(() => new CustomUserStore(new ApplicationDbContext()), Lifestyle.Scoped);
             container.Register<ApplicationUserManager>(Lifestyle.Scoped);
@@ -58,6 +60,7 @@ namespace Paulo.Web.App_Start
             container.Register<IFilmeService, FilmeService>(Lifestyle.Scoped);
             container.Register<IGeneroService, GeneroService>(Lifestyle.Scoped);
             container.Register<ILocacaoService, LocacaoService>(Lifestyle.Scoped);
+            container.Register<ICpfService, CpfService>(Lifestyle.Scoped);
 
             container.Register(() =>
             {

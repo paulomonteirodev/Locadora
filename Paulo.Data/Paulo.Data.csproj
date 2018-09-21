@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\AppContext.cs" />
+    <Compile Include="Context\AppDbContext.cs" />
     <Compile Include="EntitiesConfig\UsuarioConfig.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Entities\Locacao.cs" />

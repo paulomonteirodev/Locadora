@@ -9,6 +9,8 @@ namespace Paulo.Infra.Identity.Models
         public string Name { get; set; }
 
         [Required]
+        [RegularExpression("^[0-9]*", ErrorMessage = "CPF aceita somente números")]
+        [MinLength(11, ErrorMessage = "O CPF deve conter no minimo 11 caracteres.")]
         [StringLength(11, ErrorMessage = "O CPF deve conter no máximo 11 caracteres.")]
         [Display(Name = "CPF")]
         public string CPF { get; set; }

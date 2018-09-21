@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Paulo.Core.Repositories;
+using Paulo.Data.Context;
 using Paulo.Data.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,12 @@ namespace Paulo.Impl.Repositories
 {
     public class LocacaoRepository : Repository<Locacao>, ILocacaoRepository
     {
+        public LocacaoRepository(AppDbContext db)
+            : base(db)
+        {
+
+        }
+
         public override void Add(Locacao obj)
         {
             obj.DataDaLocacao = DateTime.Now;
@@ -19,15 +26,20 @@ namespace Paulo.Impl.Repositories
         public override IEnumerable<Locacao> GetAll()
         {
             var cn = db.Database.Connection;
+            cn.Open();
 
             var sql = @"SELECT * FROM Locacao INNER JOIN AspNetUsers ON Locacao.UsuarioId = AspNetUsers.Id WHERE Locacao.Deleted = 0";
 
-            return cn.Query<Locacao, Usuario, Locacao>(sql,
-                map: (locacao, usuario) => 
+            var result = cn.Query<Locacao, Usuario, Locacao>(sql,
+                map: (locacao, usuario) =>
                 {
                     locacao.Usuario = usuario;
                     return locacao;
                 });
+
+            cn.Close();
+
+            return result;
         }
 
         public void RentFilmes(Locacao locacao, List<int> selectedFilmesIds)

@@ -10,7 +10,12 @@ namespace Paulo.Impl
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
-        protected AppDbContext db = new AppDbContext();
+        protected AppDbContext db;
+
+        public Repository(AppDbContext db)
+        {
+            this.db = db;
+        }
 
         public virtual void Add(TEntity obj)
         {
