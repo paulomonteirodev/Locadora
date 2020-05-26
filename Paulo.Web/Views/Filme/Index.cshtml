@@ -13,7 +13,11 @@
     <p>
         @Html.ActionLink("Criar Novo", "Create", null, htmlAttributes: new { @class = "pull-left" })
     </p>
-    <input type="submit" class="btn btn-danger btn-delete pull-right" value="Deletar os selecionados" />
+
+    if (Model != null && Model.Any())
+    {
+        <input type="submit" class="btn btn-danger btn-delete pull-right" value="Deletar os selecionados" />
+    }
 
     <table class="table">
         <tr>

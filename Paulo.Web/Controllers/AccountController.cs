@@ -6,8 +6,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Paulo.Core.Services;
-using Paulo.Infra.Identity.Configuration;
-using Paulo.Infra.Identity.Models;
+using Paulo.Data.Identity.Config;
+using Paulo.Data.Identity.Models;
 
 namespace Paulo.Web.Controllers
 {

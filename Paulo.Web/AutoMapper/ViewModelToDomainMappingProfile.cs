@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Paulo.Data.Entities;
+using Paulo.Data.Identity.Models;
 using Paulo.Web.ViewModels;
 
 namespace Paulo.Web.AutoMapper
@@ -16,7 +17,7 @@ namespace Paulo.Web.AutoMapper
                 .ForSourceMember(dto => dto.DataDeCadastro, opt => opt.Ignore())
                 .ForSourceMember(dto => dto.DataDeAtualizacao, opt => opt.Ignore());
 
-            CreateMap<UsuarioViewModel, Usuario>()
+            CreateMap<UsuarioViewModel, ApplicationUser>()
                 .ForSourceMember(dto => dto.DataDeCadastro, opt => opt.Ignore())
                 .ForSourceMember(dto => dto.DataDeAtualizacao, opt => opt.Ignore());
 

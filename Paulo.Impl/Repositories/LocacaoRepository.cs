@@ -2,6 +2,7 @@
 using Paulo.Core.Repositories;
 using Paulo.Data.Context;
 using Paulo.Data.Entities;
+using Paulo.Data.Identity.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace Paulo.Impl.Repositories
 
             var sql = @"SELECT * FROM Locacao INNER JOIN AspNetUsers ON Locacao.UsuarioId = AspNetUsers.Id WHERE Locacao.Deleted = 0";
 
-            var result = cn.Query<Locacao, Usuario, Locacao>(sql,
+            var result = cn.Query<Locacao, ApplicationUser, Locacao>(sql,
                 map: (locacao, usuario) =>
                 {
                     locacao.Usuario = usuario;

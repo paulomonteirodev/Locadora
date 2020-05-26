@@ -293,10 +293,6 @@
       <Project>{8e4ca0f1-ad71-4444-a1e4-6813da9fef3a}</Project>
       <Name>Paulo.Impl</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Paulo.Infra.Identity\Paulo.Infra.Identity.csproj">
-      <Project>{0a25f933-d2f3-46bd-81cd-adbe51320e51}</Project>
-      <Name>Paulo.Infra.Identity</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

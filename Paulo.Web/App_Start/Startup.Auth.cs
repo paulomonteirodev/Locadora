@@ -4,9 +4,8 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.DataProtection;
 using Owin;
-using Paulo.Infra.Identity.Configuration;
-using Paulo.Infra.Identity.Context;
-using Paulo.Infra.Identity.Models;
+using Paulo.Data.Identity.Config;
+using Paulo.Data.Identity.Models;
 using System;
 using System.Web.Mvc;
 

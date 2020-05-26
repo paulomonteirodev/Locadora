@@ -41,12 +41,13 @@ namespace Paulo.Web.Controllers
         // GET: Filme/Create
         public ActionResult Create()
         {
-            ViewBag.Generos = new SelectList(
+            TempData["Generos"] = new SelectList(
                     generoService.GetAll(),
                     "Id",
                     "Nome"
                 );
 
+            TempData.Keep();
             return View();
         }
 
@@ -55,6 +56,7 @@ namespace Paulo.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(FilmeViewModel filmeViewModel)
         {
+            TempData.Keep();
             if (ModelState.IsValid)
             {
                 var filme = Mapper.Map<Filme>(filmeViewModel);
@@ -121,7 +123,8 @@ namespace Paulo.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                filmeService.RemoveMany(idsToDelete);
+                if(idsToDelete != null)
+                    filmeService.RemoveMany(idsToDelete);
             }
 
             return RedirectToAction("Index");

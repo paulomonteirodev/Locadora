@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Paulo.Data.Identity.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,7 +11,7 @@ namespace Paulo.Data.Entities
 
         [ForeignKey(nameof(Usuario))]
         public int UsuarioId { get; set; }
-        public virtual Usuario Usuario { get; set; }
+        public virtual ApplicationUser Usuario { get; set; }
 
         public virtual List<Filme> Filmes { get; set; }
 

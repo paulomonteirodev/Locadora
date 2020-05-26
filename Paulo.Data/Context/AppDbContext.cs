@@ -1,11 +1,13 @@
-﻿using Paulo.Data.Entities;
-using Paulo.Data.EntitiesConfig;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Paulo.Data.Entities;
+using Paulo.Data.Identity.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Paulo.Data.Context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<ApplicationUser, CustomRole,
+                                        int, CustomUserLogin, CustomUserRole, CustomUserClaim>
     {
         public AppDbContext()
             :base("AppDbContext")
@@ -13,7 +15,6 @@ namespace Paulo.Data.Context
         }
 
         // Registro das entidades
-        public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Filme> Filme { get; set; }
         public virtual DbSet<Genero> Genero { get; set; }
         public virtual DbSet<Locacao> Locacao { get; set; }
@@ -26,9 +27,6 @@ namespace Paulo.Data.Context
 
             // Remover configuração de plurização das entidades
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            // Registro da configuração do usuário pra de adaptar a Entidade do Identity
-            modelBuilder.Configurations.Add(new UsuarioConfig());
 
             base.OnModelCreating(modelBuilder);
         }

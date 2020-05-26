@@ -103,7 +103,8 @@ namespace Paulo.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                generoService.RemoveMany(idsToDelete);
+                if(idsToDelete != null)
+                    generoService.RemoveMany(idsToDelete);
             }
 
             return RedirectToAction("Index");

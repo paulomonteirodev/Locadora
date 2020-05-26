@@ -9,9 +9,8 @@ using Paulo.Data.Context;
 using Paulo.Impl;
 using Paulo.Impl.Repositories;
 using Paulo.Impl.Services;
-using Paulo.Infra.Identity.Configuration;
-using Paulo.Infra.Identity.Context;
-using Paulo.Infra.Identity.Models;
+using Paulo.Data.Identity.Config;
+using Paulo.Data.Identity.Models;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
@@ -44,8 +43,7 @@ namespace Paulo.Web.App_Start
         {
             // Identity
             container.Register<AppDbContext>(Lifestyle.Scoped);
-            container.Register<ApplicationDbContext>(Lifestyle.Scoped);
-            container.Register<IUserStore<ApplicationUser, int>>(() => new CustomUserStore(new ApplicationDbContext()), Lifestyle.Scoped);
+            container.Register<IUserStore<ApplicationUser, int>>(() => new CustomUserStore(new AppDbContext()), Lifestyle.Scoped);
             container.Register<ApplicationUserManager>(Lifestyle.Scoped);
             container.Register<ApplicationSignInManager>(Lifestyle.Scoped);
 

@@ -4,8 +4,8 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using Paulo.Infra.Identity.Configuration;
-using Paulo.Infra.Identity.Models;
+using Paulo.Data.Identity.Config;
+using Paulo.Data.Identity.Models;
 
 namespace Paulo.Web.Controllers
 {

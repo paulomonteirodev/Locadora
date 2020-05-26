@@ -58,6 +58,9 @@
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -69,7 +72,24 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -78,47 +98,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\ApplicationSignInManager.cs" />
-    <Compile Include="Configuration\ApplicationUserManager.cs" />
-    <Compile Include="Configuration\EmailService.cs" />
-    <Compile Include="Context\ApplicationDbContext.cs" />
-    <Compile Include="Migrations\201809200001231_First_Migration.cs" />
-    <Compile Include="Migrations\201809200001231_First_Migration.Designer.cs">
-      <DependentUpon>201809200001231_First_Migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809201809591_ApplicationUser_Added_Properties.cs" />
-    <Compile Include="Migrations\201809201809591_ApplicationUser_Added_Properties.Designer.cs">
-      <DependentUpon>201809201809591_ApplicationUser_Added_Properties.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809202036519_ApplicationUser_Added_Name.cs" />
-    <Compile Include="Migrations\201809202036519_ApplicationUser_Added_Name.Designer.cs">
-      <DependentUpon>201809202036519_ApplicationUser_Added_Name.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AddPhoneNumberViewModel.cs" />
-    <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\ChangePasswordViewModel.cs" />
-    <Compile Include="Models\ConfigureTwoFactorViewModel.cs" />
-    <Compile Include="Models\Custom\CustomRole.cs" />
-    <Compile Include="Models\Custom\CustomRoleStore.cs" />
-    <Compile Include="Models\Custom\CustomUserClaim.cs" />
-    <Compile Include="Models\Custom\CustomUserLogin.cs" />
-    <Compile Include="Models\Custom\CustomUserRole.cs" />
-    <Compile Include="Models\Custom\CustomUserStore.cs" />
-    <Compile Include="Models\ExternalLoginConfirmationViewModel.cs" />
-    <Compile Include="Models\ExternalLoginListViewModel.cs" />
-    <Compile Include="Models\FactorViewModel.cs" />
-    <Compile Include="Models\ForgotPasswordViewModel.cs" />
-    <Compile Include="Models\ForgotViewModel.cs" />
-    <Compile Include="Models\IndexViewModel.cs" />
-    <Compile Include="Models\LoginViewModel.cs" />
-    <Compile Include="Models\ManageLoginsViewModel.cs" />
-    <Compile Include="Models\RegisterViewModel.cs" />
-    <Compile Include="Models\ResetPasswordViewModel.cs" />
-    <Compile Include="Models\SendCodeViewModel.cs" />
-    <Compile Include="Models\SetPasswordViewModel.cs" />
-    <Compile Include="Models\VerifyCodeViewModel.cs" />
-    <Compile Include="Models\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -126,15 +105,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809200001231_First_Migration.resx">
-      <DependentUpon>201809200001231_First_Migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809201809591_ApplicationUser_Added_Properties.resx">
-      <DependentUpon>201809201809591_ApplicationUser_Added_Properties.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809202036519_ApplicationUser_Added_Name.resx">
-      <DependentUpon>201809202036519_ApplicationUser_Added_Name.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\Paulo.Core\Paulo.Core.csproj">
+      <Project>{1fd2a6a4-51b7-4055-9558-c3cc3e5bbd49}</Project>
+      <Name>Paulo.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

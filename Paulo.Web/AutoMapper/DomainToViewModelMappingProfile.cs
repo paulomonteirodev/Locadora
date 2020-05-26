@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Paulo.Data.Entities;
+using Paulo.Data.Identity.Models;
 using Paulo.Web.ViewModels;
 
 namespace Paulo.Web.AutoMapper
@@ -10,7 +11,7 @@ namespace Paulo.Web.AutoMapper
         {
             CreateMap<Filme, FilmeViewModel>();
             CreateMap<Genero, GeneroViewModel>();
-            CreateMap<Usuario, UsuarioViewModel>();
+            CreateMap<ApplicationUser, UsuarioViewModel>();
             CreateMap<Locacao, LocacaoViewModel>();
         }
     }
